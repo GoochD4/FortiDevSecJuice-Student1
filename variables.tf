@@ -13,7 +13,7 @@ variable "project" {
   type    = string
 }
 
-# FortiGate Image name
+# FortiGate Image names
 # 7.2.3 payg is projects/fortigcp-project-001/global/images/fortinet-fgtondemand-723-20221110-001-w-license
 # 7.2.3 byol is projects/fortigcp-project-001/global/images/fortinet-fgt-723-20221110-001-w-license
 variable "image" {
