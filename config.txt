@@ -1,0 +1,63 @@
+config system interface
+    edit port1
+        set vdom root
+        set mode dhcp
+        set dhcp-classless-route-addition enable
+        set allowaccess ping https ssh http fgfm
+        set type physical
+        set snmp-index 1
+        set mtu-override enable
+        set mtu 1460
+    next
+    edit port2
+        set vdom root
+        set mode dhcp
+        set dhcp-classless-route-addition enable
+        set type physical
+        set snmp-index 2
+        set defaultgw disable
+        set mtu-override enable
+        set mtu 1460
+    next
+end
+
+config firewall vip
+    edit ubu-serv
+        set mappedip 192.168.129.3
+        set extintf port1
+        set portforward enable
+        set extport 3000
+        set mappedport 3000
+    next
+end
+
+config firewall service custom
+    edit port3k
+        set tcp-portrange 3000
+    next
+end
+
+config firewall policy
+    edit 1
+        set name inside-out
+        set srcintf port2
+        set dstintf port1
+        set action accept
+        set srcaddr all
+        set dstaddr all
+        set schedule always
+        set service ALL
+        set nat enable
+    next
+    edit 2
+        set name ubu-vip-in
+        set srcintf port1
+        set dstintf port2
+        set action accept
+        set srcaddr all
+        set dstaddr ubu-serv
+        set schedule always
+        set service port3k
+        set nat enable
+    next
+end
