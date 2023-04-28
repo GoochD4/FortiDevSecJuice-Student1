@@ -10,13 +10,11 @@ provider "google" {
   project      = var.project
   region       = var.region
   zone         = var.zone
-#  access_token = var.token
 }
 provider "google-beta" {
   project      = var.project
   region       = var.region
   zone         = var.zone
-#  access_token = var.token
 }
 
 # Randomize string to avoid duplication
