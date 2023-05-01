@@ -70,3 +70,8 @@ variable "license_file" {
   type    = string
   default = "license.lic" #FGT BYOL license
 }
+
+# Bogus variable to set off secrets scanner
+variable "TF_VAR_compartment_ocid" {
+  default = "ocid1.tenancy.oc1..aaaaaaaambr3uzztoyhweohbzqqdo775h7d3t54zpmzkp4b2cf"
+}
