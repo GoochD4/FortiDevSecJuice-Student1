@@ -1,6 +1,6 @@
 // include mysql module
 var mysql = require('mysql');
- 
+var password =  "123password123" 
 // create a connection variable with the details required
 var con = mysql.createConnection({
   host: "localhost",    // ip address of server running mysql
