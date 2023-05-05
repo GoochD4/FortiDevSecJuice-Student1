@@ -87,18 +87,6 @@ resource "google_compute_firewall" "allow-all-fgt" {
   target_tags   = ["allow-fgt"]
 }
 
-# Firewall Rule Internal
-resource "google_compute_firewall" "allow-internal" {
-  name    = "allow-internal-${random_string.random_name_post.result}"
-  network = google_compute_network.trust.name
-
-  allow {
-    protocol = "all"
-  }
-  source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["allow-internal"]
-}
-
 # Create Static Public IP
 resource "google_compute_address" "static" {
   name = "tec-fgt-${random_string.random_name_post.result}-pip"
